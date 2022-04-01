@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="springbootmythead"/>
+<aop-project name="Luyentapweb1"/>
 <aop-project name="SpringbootHello"/>
+<aop-project name="BaiTapSpringMVC"/>
 </aop-reference-model>

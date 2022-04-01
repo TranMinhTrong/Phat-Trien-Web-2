@@ -35,6 +35,13 @@
 		<servlet-name>TamGiacServLet</servlet-name>
 		<servlet-class>com.trong.BaiTapSpringMVC.controller.TamGiacServLet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>RegisterServerlet</display-name>
+		<servlet-name>RegisterServerlet</servlet-name>
+		<servlet-class>RegisterServerlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringDispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -42,6 +49,10 @@
 	<servlet-mapping>
 		<servlet-name>TamGiacServLet</servlet-name>
 		<url-pattern>/TamGiacServLet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterServerlet</servlet-name>
+		<url-pattern>/RegisterServerlet</url-pattern>
 	</servlet-mapping>
 
 	<session-config>
