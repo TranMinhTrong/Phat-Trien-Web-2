@@ -5,5 +5,7 @@ import java.util.List;
 import trong.ntu.edy.model.Employee;
 public interface EmployeeService {
 	List<Employee> getAllEmployees();
+	
+	void saveEmloyee(Employee employee);
 
 }

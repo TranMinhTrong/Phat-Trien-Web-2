@@ -17,5 +17,10 @@ public class EmployeeServiceTmpl implements EmployeeService{
 	public List<Employee> getAllEmployees() {
 		return employeeReoonsitory.findAll();
 	}
+	@Override
+	public void saveEmloyee(Employee employee) {
+		// TODO Auto-generated method stub
+		this.employeeReoonsitory.save(employee);
+	}
 
 }
