@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import trong.ntu.edy.model.Employee;
 import trong.ntu.edy.service.EmployeeService;
@@ -24,7 +25,7 @@ public class EmployeeController {
 	//display list of emplyees
 	@GetMapping("/")
 	public String viewHomePage(Model model) {
-		return findPaginated(1, model);
+		return findPaginated(1,"firstName","asc",model);
 	}
 	
 	@GetMapping("/showNewEmployeeForm")
@@ -66,16 +67,24 @@ public class EmployeeController {
 		return "redirect:/";
 	}
 	
+	//Phan trang AHD SORT
 	@GetMapping("/page/{pageNo}")
-	public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+	public String findPaginated(@PathVariable(value = "pageNo") int pageNo, 
+			@RequestParam("sortFiled") String sortField,
+			@RequestParam("sortDir") String sortDir, Model model) {
 		
 	int pageSize = 5;
-	Page<Employee> page= employeeService.findPaginated(pageNo, pageSize);
+	Page<Employee> page= employeeService.findPaginated(pageNo, pageSize,sortField,sortDir);
 	List<Employee> listEmployees=page.getContent();
 	
 	model.addAttribute("currentPage",pageNo);
 	model.addAttribute("totalPages", page.getTotalPages());
 	model.addAttribute("totalItems",page.getTotalElements());
+	
+	model.addAttribute("sortFiled",sortField);
+	model.addAttribute("sortDir", sortDir);
+	model.addAttribute("reverseSortDir",sortDir.equals("asc") ? "desc":"asc");
+	
 	model.addAttribute("listEmployees",listEmployees);
 	
 	return "index";	
